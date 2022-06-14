@@ -1,0 +1,13 @@
+{
+  "typescript.validate.enable": true,
+  "path-intellisense.mappings": {
+    "@/*": "${workspaceRoot}/src/*"
+  },
+  "eslint.workingDirectories": [
+    {
+      "directory": "./src",
+      "!cwd": true
+    }
+  ],
+  "java.configuration.updateBuildConfiguration": "automatic"
+}

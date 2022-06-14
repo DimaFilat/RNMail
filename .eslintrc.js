@@ -2,17 +2,17 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint/eslint-plugin'],
-  extends: 'prettier',
+  extends: ['prettier'],
   rules: {
-    '@typescritp-eslint/no-unused-vars': [
+    '@typescript-eslint/no-unused-vars': [
       'error',
       {
-        argsIgnorePattern: '^_',
-      },
+        argsIgnorePattern: '^_'
+      }
     ],
     '@typescript-eslint/no-shadow': 1,
     'no-shadow': 'off',
     'no-undef': 'off',
-    'no-unused-vars': 'off',
-  },
-};
+    'no-unused-vars': 'off'
+  }
+}
