@@ -43,7 +43,8 @@ const theme = createTheme({
     sidebarBackground: p.navy20,
     sidebarForeground: p.navy90,
     sidebarSeparator: p.paper00 + '00',
-    windowBackground: '#f0f0f0'
+    windowBackground: '#f0f0f0',
+    headerBarBackground: p.paper20
   },
   borderRadii: {
     xs: 4,
@@ -51,6 +52,12 @@ const theme = createTheme({
     md: 12,
     lg: 16,
     hg: 128
+  },
+  barVariants: {
+    headerBar: {
+      bg: 'headerBarBackground',
+      borderRadius: 'hg'
+    }
   },
   textVariants: {
     defaults: {
