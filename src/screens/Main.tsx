@@ -1,17 +1,40 @@
-import React from 'react'
+import React, {useCallback} from 'react'
+import {CompositeScreenProps} from '@react-navigation/native'
+import {DrawerScreenProps} from '@react-navigation/drawer'
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
 
-import NoteList from '@/components/NoteList'
-import {Container} from '@/atoms'
 import FeatherIcon from '@/components/Icon'
 import HeaderBar from '@/components/Headerbar'
+import NoteList from '@/components/NoteList'
+import {Box, Container, TouchableOpacity, Text} from '@/atoms'
+import {HomeDrawerParamList, RootStackParamList} from '@/Navs'
 
-const MainScreen = () => {
+type Props = CompositeScreenProps<
+  DrawerScreenProps<HomeDrawerParamList, 'Main'>,
+  NativeStackScreenProps<RootStackParamList>
+>
+
+const MainScreen = ({navigation}: Props) => {
+  const handleSidebarToggle = useCallback(() => {
+    navigation.toggleDrawer()
+  }, [navigation])
   return (
     <Container justifyContent="center" alignItems="center">
       <NoteList />
       <HeaderBar>
-        <FeatherIcon name="menu" size={22} />
-        <FeatherIcon name="more-vertical" size={22} />
+        <TouchableOpacity
+          m="xs"
+          onPress={handleSidebarToggle}
+          p="xs"
+          rippleBorderless>
+          <FeatherIcon name="menu" size={22} />
+        </TouchableOpacity>
+        <Box flex={1} alignItems="center">
+          <Text fontWeight="bold">All notes</Text>
+        </Box>
+        <TouchableOpacity m="xs" p="xs" rippleBorderless>
+          <FeatherIcon name="more-vertical" size={22} />
+        </TouchableOpacity>
       </HeaderBar>
     </Container>
   )
