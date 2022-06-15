@@ -5,7 +5,6 @@ import {
   useSharedValue,
   useAnimatedScrollHandler,
   interpolate,
-  max,
   withTiming
 } from 'react-native-reanimated'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
