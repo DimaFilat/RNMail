@@ -8,6 +8,7 @@ import HeaderBar from '@/components/Headerbar'
 import NoteList from '@/components/NoteList'
 import {Box, Container, TouchableOpacity, Text} from '@/atoms'
 import {HomeDrawerParamList, RootStackParamList} from '@/Navs'
+import useStickyHeader from '@/hooks/useStickyHeader'
 
 type Props = CompositeScreenProps<
   DrawerScreenProps<HomeDrawerParamList, 'Main'>,
@@ -15,13 +16,15 @@ type Props = CompositeScreenProps<
 >
 
 const MainScreen = ({navigation}: Props) => {
+  const {handleNoteListLayout, handleScroll, headerBarStyle, headerBarHeight} =
+    useStickyHeader()
   const handleSidebarToggle = useCallback(() => {
     navigation.toggleDrawer()
   }, [navigation])
   return (
     <Container justifyContent="center" alignItems="center">
-      <NoteList />
-      <HeaderBar>
+      <NoteList contentInsetTop={headerBarHeight} onScroll={handleScroll} />
+      <HeaderBar style={headerBarStyle} onLayout={handleNoteListLayout}>
         <TouchableOpacity
           m="xs"
           onPress={handleSidebarToggle}
