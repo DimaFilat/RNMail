@@ -1,5 +1,5 @@
-import React, {FC} from 'react'
-import {Platform} from 'react-native'
+import React, { FC } from 'react'
+import { Platform } from 'react-native'
 import {
   BackgroundColorProps,
   BackgroundColorShorthandProps,
@@ -16,8 +16,8 @@ import {
   useTheme
 } from '@shopify/restyle'
 
-import {Theme} from '@/themes'
-import Pressable, {PressableProps} from './Pressable'
+import { Theme } from '@/themes'
+import Pressable, { PressableProps } from './Pressable'
 
 type RestyleProps = BackgroundColorProps<Theme> &
   BackgroundColorShorthandProps<Theme> &
@@ -44,7 +44,7 @@ const Touchable = ({
   style,
   ...rest
 }: Props) => {
-  const {style: pressedStyle = undefined} = useRestyle(
+  const { style: pressedStyle = undefined } = useRestyle(
     restyleFunctions,
     pressed
   )
@@ -55,9 +55,9 @@ const Touchable = ({
   return (
     <Pressable
       {...rest}
-      android_ripple={{color: rippleColorValue, borderless: rippleBorderless}}
+      android_ripple={{ color: rippleColorValue, borderless: rippleBorderless }}
       // @ts-ignore
-      style={({pressed: isPressed}) =>
+      style={({ pressed: isPressed }) =>
         isPressed ? [style, pressedStyle] : style
       }
     />
@@ -68,7 +68,7 @@ export const TouchableOpacity: FC<Props> = props => (
   <Touchable
     {...props}
     rippleColor="foreground"
-    pressed={{opacity: Platform.select({ios: 0.6})}}
+    pressed={{ opacity: Platform.select({ ios: 0.6 }) }}
   />
 )
 

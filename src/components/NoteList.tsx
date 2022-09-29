@@ -20,12 +20,28 @@ const StyledFlatList = createBox<Theme, AnimateProps<FlatListProps<Note>>>(
 interface Props {
   contentInsetTop: number
   onScroll: (event: NativeSyntheticEvent<NativeScrollEvent>) => void
+  onItemPress: (noteId: string) => void
+  onItemSwipeLeft: (noteId: string, cancel: () => void) => void
 }
 
-const NoteList: FC<Props> = ({contentInsetTop, onScroll}: Props) => {
-  const renderItem = useCallback(({item}) => {
-    return <NoteListItem {...item} />
-  }, [])
+const NoteList: FC<Props> = ({
+  contentInsetTop,
+  onScroll,
+  onItemPress,
+  onItemSwipeLeft
+}: Props) => {
+  const renderItem = useCallback(
+    ({item}) => {
+      return (
+        <NoteListItem
+          {...item}
+          onPress={onItemPress}
+          onSwipeLeft={onItemSwipeLeft}
+        />
+      )
+    },
+    [onItemPress, onItemSwipeLeft]
+  )
 
   const listHeaderComponent = <Box width="100%" height={contentInsetTop} />
 

@@ -4,17 +4,18 @@ import {createTheme} from '@shopify/restyle'
 // Palette
 const p = {
   black: '#000',
-  red: '#ff0000',
+  blue70: '#2185d0',
   blue: 'blue',
-  yellow: 'yellow',
+  navy20: '#171a21',
+  navy90: '#b9babc',
   paper00: '#ffffff',
   paper10: '#f5f5f4',
   paper20: '#e6e6e6',
   paper30: '#767577',
   paper90: '#202020',
-  blue70: '#2185d0',
-  navy20: '#171a21',
-  navy90: '#b9babc'
+  red: '#ff0000',
+  white: '#ffffff',
+  yellow: 'yellow'
 }
 
 const theme = createTheme({
@@ -37,6 +38,7 @@ const theme = createTheme({
     red: p.red,
     blue: p.blue,
     yellow: p.yellow,
+    white: p.white,
 
     background: p.paper10,
     foreground: p.paper90,
